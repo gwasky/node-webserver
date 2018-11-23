@@ -4,7 +4,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs')
 
-const port = process.env.PORT || 3000; //If environment variable Port doesnt exist, set port to 3000
+const port = process.env.PORT || 3001; //If environment variable Port doesnt exist, set port to 3000
 var app = express(); // new express app
 
 hbs.registerPartials(__dirname + '/views/partials')
@@ -25,9 +25,9 @@ app.use((req,res,next) =>{
 });
 
 // Dont use next if, something is not right,
-app.use((req,res,next)=>{
-  res.render('maintanance.hbs')
-});
+// app.use((req,res,next)=>{
+//   res.render('maintanance.hbs')
+// });
 
 // Make this private, by executing it after the Express middleware
 
@@ -66,6 +66,14 @@ app.get('/about',(req,res) => {
    //res.send('About Page');
    res.render('about.hbs',{
      pageTitle:'About Page'//,
+     //CurrentYear: new Date().getFullYear()
+   })
+});
+
+app.get('/projects',(req,res) => {
+   //res.send('About Page');
+   res.render('projects.hbs',{
+     pageTitle:'Projects'//,
      //CurrentYear: new Date().getFullYear()
    })
 });
